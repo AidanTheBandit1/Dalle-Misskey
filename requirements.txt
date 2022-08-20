@@ -1,6 +1,5 @@
 requests
-discord-webhook
 aiohttp~=3.7.4.post0
-discord~=1.7.3
+Misskey
 PyYAML~=6.0
 Pillow~=9.2.0
