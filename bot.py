@@ -9,12 +9,10 @@ from pathlib import Path
 from typing import Union
 
 # Discord
-import discord
+import Misskey
 
 # PyYaml
 import yaml
-from discord import Embed
-from discord.ext import commands
 
 """ Load the configuration file """
 with open("data.yaml") as f:
@@ -126,16 +124,16 @@ class DallEDiscordBot(commands.Bot):
 
     def add_commands(self) -> None:
 
-        @self.command(name="dalle", description="Generate dall-e images using your query.")
+        @self.command(name="AI", description="Generate dall-e images using your query.")
         async def execute(ctx, *, query) -> None:
             # Check if query is empty
             if not query:
-                await ctx.message.reply("DALL·E: Invalid query\nPlease enter a query (e.g !dalle dogs on space).")
+                await ctx.message.reply("Missk·E: Invalid query\nPlease enter a query (e.g !dalle dogs on space).")
                 return
 
             # Check if query is too long
             if len(query) > 100:
-                await ctx.message.reply("DALL·E: Invalid query\nQuery is too long.")
+                await ctx.message.reply("Missk·E: Invalid query\nQuery is too long.")
                 return
 
             print(f"[-] {ctx.author} called !dalle {query}")
@@ -173,29 +171,6 @@ class DallEDiscordBot(commands.Bot):
                 # Delete the author folder in ./generated with author id, if exists
                 del_dir(f"./generated/{ctx.author.id}")
 
-        @self.command(name="ping")
-        async def ping(ctx) -> None:
-            """
-            Pings the bot.
-            :param ctx:
-            :return:
-            """
-            await ctx.message.reply("Pong!")
-
-        @self.command(name="dallehelp", description="Shows the help menu.")
-        async def help_command(ctx) -> None:
-            """
-            Displays the help command.
-            :param ctx:
-            :return:
-            """
-            await ctx.message.reply("""
-            **Commands**:
-                !dallehelp - shows this message
-                !ping - pong!
-                !dalle <query> - makes a request to the dall-e api and returns the result
-            """)
-
 
 async def background_task() -> None:
     """
@@ -207,4 +182,4 @@ async def background_task() -> None:
 
 bot = DallEDiscordBot(command_prefix=c['bot_prefix'], self_bot=False)
 bot.loop.create_task(background_task())
-bot.run(c['discord_token'])
+mk = Misskey("app.barkle.xyz", i='discord_token')
