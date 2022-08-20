@@ -121,7 +121,11 @@ class DallEDiscordBot(commands.Bot):
         img_draw.text((1, 1), query, font=fnt, fill=(255, 255, 255))
         new_im.save(f"./generated/{ctx.author.id}/art.png")
         return f"./generated/{ctx.author.id}/art.png"
-
+    
+        mk.notes_create(
+            text="Hello Misskey.py!"
+        )
+    
     def add_commands(self) -> None:
 
         @self.command(name="AI", description="Generate dall-e images using your query.")
