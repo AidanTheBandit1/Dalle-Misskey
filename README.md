@@ -1,3 +1,5 @@
+**NEVER FINISHED**
+
 [![py-Discord.png](https://github.com/borisdayma/dalle-mini/raw/main/img/logo.png)](https://postimg.cc/TpGJwp0j)
 
 [DALL·E Mini][]
